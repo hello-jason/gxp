@@ -1,7 +1,12 @@
 #!/bin/bash
 
+###################
+# INFO
+###################
 # Uncomment the following line for debugging
 set -x
+# xbindkeys - config located in ~/.xbindkeysrc
+# autostart - config located in ~/.config/autostart/gxp-kiosk.desktop
 
 ###################
 # SITE URLs
@@ -10,10 +15,9 @@ declare -a WEBSITES=(
 "torquemag.io"
 "wpengine.com"
 "wpengine-careers.com"
-"google.com"
-"hellojason.net"
-"apple.com"
-"microsoft.com"
+"nintendo.com"
+"wordpress.org"
+"stackoverflow.com"
 )
 
 ###################
@@ -23,14 +27,11 @@ declare -a WEBSITES=(
 # return a random site from the array
 ###################
 function random_site () {
-  # get a random site
-  return ${WEBSITES[$RANDOM % ${#WEBSITES[@]} ]}
+  randomSiteName=${WEBSITES[$RANDOM % ${#WEBSITES[@]} ]}
 }
 
 function load_site () {
-  randomSite=$(random_site)
-  echo "things and " random_site
-#  chromium-browser --kiosk --incognito $randomSite
+  chromium-browser --kiosk --incognito $randomSiteName
 }
 
 # sniff keyboard input
@@ -38,8 +39,19 @@ function listen_keyboard_input () {
   while true; do
     read -rsn1 input
     if [ "$input" = "m" ]; then
-      echo "Initialize site load..."
+      random_site
       load_site
+    fi
+  done
+}
+
+function better_keyboard_listener () {
+  while true; do
+    sleep 0.2
+    read -rsn1 input
+    triggerKey=$(xinput --query-state 7 | grep "key\[58]")
+    if [$( "$triggerKey" = "down")]; then
+      echo "magic key"
     fi
   done
 }
@@ -48,3 +60,4 @@ function listen_keyboard_input () {
 # EXECUTE
 ###################
 listen_keyboard_input
+#better_keyboard_listener
