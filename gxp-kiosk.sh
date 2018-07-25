@@ -7,6 +7,7 @@
 set -x
 # xbindkeys - config located in ~/.xbindkeysrc
 # autostart - config located in ~/.config/autostart/gxp-kiosk.desktop
+# pkill     - terminates running instances of Chromium
 
 ###################
 # SITE URLs
@@ -34,30 +35,14 @@ function load_site () {
   chromium-browser --kiosk --incognito $randomSiteName
 }
 
-# sniff keyboard input
-function listen_keyboard_input () {
-  while true; do
-    read -rsn1 input
-    if [ "$input" = "m" ]; then
-      random_site
-      load_site
-    fi
-  done
+function kill_chromium () {
+  pkill chromium-browse
 }
 
-function better_keyboard_listener () {
-  while true; do
-    sleep 0.2
-    read -rsn1 input
-    triggerKey=$(xinput --query-state 7 | grep "key\[58]")
-    if [$( "$triggerKey" = "down")]; then
-      echo "magic key"
-    fi
-  done
-}
 
 ###################
 # EXECUTE
 ###################
-listen_keyboard_input
-#better_keyboard_listener
+random_site
+kill_chromium
+load_site
