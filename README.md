@@ -7,7 +7,11 @@ The goal here is to have the Raspberry Pi boot up into a browser window, in kios
 It will randomly load a webiste from an array of websites, which are the websites of visitors to the Summit. When that site loads, Asteroids will load on top of the web page, and the user can use the joystick and buttons to play asteroids on top of the website, destroying elements on the page.
 
 ## Bootup script
-todo
+Raspbian looks for files named `*.desktop` inside `~/.config/autostart/`, and it will load those files during bootup.
+
+This repo contains a file `gxp-startup.desktop`, which I symlinked to from within the autostart directory.
+
+You should not need to edit `gxp-startup.desktop`. However, you may modify the shell script that it calls, `gxp-`
 
 ## OS-level keyboard shortcuts
 Using `xbindkeys` for keyboard shortcuts. This lets the user press a button that triggers a shell script; in this case, that script loads another website from the list.

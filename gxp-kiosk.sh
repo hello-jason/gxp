@@ -4,7 +4,7 @@
 # INFO
 ###################
 # Uncomment the following line for debugging
-set -x
+#set -x
 # xbindkeys - config located in ~/.xbindkeysrc
 # autostart - config located in ~/.config/autostart/gxp-kiosk.desktop
 # pkill     - terminates running instances of Chromium
@@ -50,3 +50,4 @@ function kill_chromium () {
 get_random_site
 kill_chromium
 launch_site
+
