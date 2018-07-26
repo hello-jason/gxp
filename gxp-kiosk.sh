@@ -9,9 +9,9 @@ set -x
 # autostart - config located in ~/.config/autostart/gxp-kiosk.desktop
 # pkill     - terminates running instances of Chromium
 
-###################
+######################################
 # SITE URLs
-###################
+######################################
 declare -a WEBSITES=(
 "example.com"
 "wordpress.org"
@@ -19,28 +19,34 @@ declare -a WEBSITES=(
 "gnu.org"
 )
 
-###################
+######################################
 # FUNCTIONS
-###################
+######################################
 
 # return a random site from the array
-###################
-function random_site () {
+######################################
+function get_random_site () {
   randomSiteName=${WEBSITES[$RANDOM % ${#WEBSITES[@]} ]}
 }
 
-function load_site () {
+# call Chromium in kiosk mode for fullscreen, incognito
+# to avoid 'restore pages' warnings and so forth
+######################################
+function launch_site () {
   chromium-browser --kiosk --incognito $randomSiteName
 }
 
+# terminate chromium completely before launching a new session
+# overkill maybe, but it works well enough
+######################################
 function kill_chromium () {
   pkill chromium-browse
 }
 
 
-###################
+######################################
 # EXECUTE
-###################
-random_site
+######################################
+get_random_site
 kill_chromium
-load_site
+launch_site
