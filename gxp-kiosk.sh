@@ -13,12 +13,10 @@ set -x
 # SITE URLs
 ###################
 declare -a WEBSITES=(
-"torquemag.io"
-"wpengine.com"
-"wpengine-careers.com"
-"nintendo.com"
+"example.com"
 "wordpress.org"
-"stackoverflow.com"
+"wikipedia.org"
+"gnu.org"
 )
 
 ###################
