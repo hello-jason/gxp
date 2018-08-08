@@ -13,7 +13,6 @@ function move_mouse () {
 }
 
 
-sleep 10
 launch_qjoypad &
 move_mouse &
 launch_game &
