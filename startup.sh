@@ -8,6 +8,14 @@ function launch_game () {
   /bin/bash /home/pi/gxp/cycle-website.sh
 }
 
-launch_qjoypad
-launch_game
+function move_mouse () {
+  xdotool mousemove 500 500
+}
+
+
+sleep 10
+launch_qjoypad &
+move_mouse &
+launch_game &
+wait
 
