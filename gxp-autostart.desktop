@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name="GXP Kiosk"
-Exec=/home/pi/gxp/gxp-kiosk.sh
+Exec="/home/pi/gxp/startup.sh"
 X-GNOME-Autostart-enabled=true
