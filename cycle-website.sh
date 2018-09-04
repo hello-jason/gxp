@@ -13,10 +13,10 @@
 # SITE URLs
 ######################################
 declare -a WEBSITES=(
-"example.com"
-"wordpress.org"
-"wikipedia.org"
-"gnu.org"
+"https://wp-themes.com/winter/"
+"http://www.007museum.com/"
+"https://wp-themes.com/rounded-blue/"
+"http://theblogosaurus.com/"
 )
 
 ######################################
