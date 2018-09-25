@@ -13,8 +13,8 @@
 # SITE URLs
 ######################################
 declare -a WEBSITES=(
-"https://twentytwelvedemo.wordpress.com/"
-"https://twentyfourteendemo.wordpress.com/"
+"https://summittwelve.wpengine.com/"
+"https://summitfourteen.wpengine.com/"
 "http://winterdemo.wpengine.com/"
 "http://jakobian.wpengine.com/"
 "http://summitsite01.wpengine.com/"
