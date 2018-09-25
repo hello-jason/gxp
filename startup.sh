@@ -13,7 +13,7 @@ function move_mouse () {
 }
 
 function update_codebase () {
-  cd gxp && git remote update && git pull origin master & cd ..
+  cd gxp && git remote update && git pull origin master && cd ..
 }
 
 update_codebase &
